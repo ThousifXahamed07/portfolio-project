@@ -19,33 +19,6 @@ const fadeIn = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: ease as unknown as [number, number, number, number] },
 });
 
-function SectionShell() {
-  return (
-    <div className="flex items-center gap-4 sm:gap-6 h-10 text-[11px] font-mono uppercase tracking-[0.16em] whitespace-nowrap overflow-hidden px-5 mx-auto max-w-[1480px]">
-      <Link
-        href="/"
-        className="text-foreground hover:text-signal transition-colors"
-      >
-        Thousif.Ahamed
-      </Link>
-      <Link
-        href="/projects"
-        className="hidden sm:inline text-foreground-2 hover:text-signal transition-colors"
-      >
-        / Projects
-      </Link>
-      <a
-        href="https://www.linkedin.com/in/thousif-ahamed-59263b24b/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden sm:inline text-foreground-2 hover:text-signal transition-colors"
-      >
-        / LinkedIn
-      </a>
-    </div>
-  );
-}
-
 function SectionHeader({
   number,
   label,
@@ -127,11 +100,10 @@ export function HomePage() {
           {/* Name */}
           <motion.h1
             {...(reduce ? {} : fade(0.1))}
-            className="font-serif text-[clamp(5rem,14vw,128.94px)] font-normal tracking-[-0.04em] leading-[0.86] text-foreground mb-8"
+            className="font-serif font-normal tracking-[-0.04em] leading-[0.86] text-foreground mb-8"
           >
-            Thousif
-            <br />
-            Ahamed<span className="text-signal italic">.</span>
+            <span className="block text-[clamp(5rem,14vw,161.28px)]">Thousif</span>
+            <span className="block text-[clamp(5rem,14vw,161.28px)]"><span className="italic text-[#ede6d3b8]">Ahamed</span><span className="text-signal italic">.</span></span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -200,8 +172,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SHELL DIVIDER ─── */}
-      <SectionShell />
+      <Divider />
 
       {/* ─── §01 — TRANSMISSION ─── */}
       <section className="py-20">
@@ -304,14 +275,92 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SHELL DIVIDER ─── */}
-      <SectionShell />
+      <Divider />
 
-      {/* ─── §02 — MANIFEST · PROJECTS ─── */}
+      {/* ─── §02 — ARCHITECTURE ─── */}
       <section className="py-20">
         <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
             number="§02"
+            label="// architecture — how i build agent systems"
+            rightLabel="LAYERED AGENT PATTERN"
+          />
+
+          <motion.div {...fadeIn(0.05)}>
+            <h2 className="font-serif text-[clamp(1.6rem,3.5vw,2.24rem)] font-normal tracking-[-0.025em] leading-[1.04] text-foreground mb-1">
+              How I architect
+            </h2>
+            <h2 className="font-serif italic text-[clamp(1.6rem,3.5vw,2.24rem)] font-normal tracking-[-0.025em] leading-[1.04] text-signal mb-6">
+              agent systems.
+            </h2>
+          </motion.div>
+
+          <motion.p
+            {...fadeIn(0.1)}
+            className="text-[16.8px] leading-[1.65] tracking-[-0.005em] text-foreground-2 mb-6 max-w-[680px]"
+          >
+            Same shape every time: a user-facing interface, an API gateway, an
+            orchestration layer that runs LLM reasoning with retrieval and tool
+            use, domain-specific data stores, and a feedback loop for evaluation.
+            The diagram below is the reference pattern &mdash; portable across
+            enterprise agent products.
+          </motion.p>
+
+          <motion.div {...fadeIn(0.15)}>
+            <div className="border border-[rgba(237,230,211,0.12)] p-5 mb-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal mb-3">
+                // The RAG trick
+              </div>
+              <p className="text-[16.8px] leading-[1.65] tracking-[-0.005em] text-foreground-2 max-w-[680px]">
+                The retrieval layer isn&rsquo;t just keyword search &mdash;
+                it&rsquo;s a metadata-filtered semantic pipeline. Documents are
+                chunked, embedded, and indexed with structured metadata so the
+                agent can scope retrieval by department, language, document type,
+                or access level before the vector similarity even runs. This
+                gives you precision without sacrificing recall, and keeps
+                hallucination rates measurably low.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Bullet points */}
+          <motion.div {...fadeIn(0.2)} className="mb-10 space-y-2">
+            {[
+              "Layered shape · portable across enterprise products",
+              "RAG retrieval with metadata filtering · scoped by department & language",
+              "Confidence gating · human-in-the-loop fallback on low scores",
+              "On-premise deployment path · GPU inference without cloud dependency",
+            ].map((point) => (
+              <div
+                key={point}
+                className="flex items-baseline gap-3 text-[14px] text-foreground-2"
+              >
+                <span className="text-signal shrink-0">&rarr;</span>
+                {point}
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Diagram */}
+          <motion.div {...fadeIn(0.25)}>
+            <div className="border border-[rgba(237,230,211,0.12)] max-w-[960px]">
+              <img
+                src={`${process.env.NODE_ENV === "production" ? "/portfolio-project" : ""}/assets/architect_01.png`}
+                alt="Agent Platform — Layered Architecture View"
+                className="w-full h-auto"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Divider />
+
+      {/* ─── §03 — MANIFEST · PROJECTS ─── */}
+      <section className="py-20">
+        <div className="mx-auto max-w-[1480px] px-5">
+          <SectionHeader
+            number="§03"
             label="// manifest · builds"
             rightLabel={`${projects.length} SYSTEMS · ${projects.length} CASE STUDIES`}
           />
@@ -407,14 +456,13 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SHELL DIVIDER ─── */}
-      <SectionShell />
+      <Divider />
 
-      {/* ─── §03 — CAPABILITY · SKILLS ─── */}
+      {/* ─── §04 — CAPABILITY · SKILLS ─── */}
       <section className="py-20">
         <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
-            number="§03"
+            number="§04"
             label="// capability · technology"
             rightLabel="CORE STACK"
           />
@@ -529,14 +577,278 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SHELL DIVIDER ─── */}
-      <SectionShell />
+      <Divider />
 
-      {/* ─── §04 — CONTACT · OPEN COMMS ─── */}
+      {/* ─── §05 — TIMELINE · CAREER ─── */}
       <section className="py-20">
         <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
-            number="§04"
+            number="§05"
+            label="// timeline · career"
+            rightLabel="3 ROLES · 2 YEARS"
+          />
+
+          <motion.div {...fadeIn(0.05)}>
+            <h2 className="font-serif text-[clamp(1.6rem,3.5vw,2.24rem)] font-normal tracking-[-0.025em] leading-[1.04] text-foreground mb-1">
+              The path,
+            </h2>
+            <h2 className="font-serif italic text-[clamp(1.6rem,3.5vw,2.24rem)] font-normal tracking-[-0.025em] leading-[1.04] text-signal mb-6">
+              replayed from origin.
+            </h2>
+          </motion.div>
+
+          <motion.p
+            {...fadeIn(0.1)}
+            className="text-[16.8px] leading-[1.65] tracking-[-0.005em] text-foreground-2 mb-12 max-w-[680px]"
+          >
+            From backend internships to enterprise AI systems. Each entry is a
+            one-line headline with the stack &mdash; the case studies above have
+            the architecture stories.
+          </motion.p>
+
+          {/* Timeline */}
+          <motion.div {...fadeIn(0.15)} className="space-y-0">
+            {/* ── 2025–2026 · Freelance AI Engineer ── */}
+            <div className="border border-[rgba(237,230,211,0.12)]">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[rgba(237,230,211,0.08)]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  2025 &ndash; 2026
+                </span>
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                  ● Current
+                </span>
+              </div>
+
+              <div className="px-5 py-5">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <h3 className="font-serif text-[1.1rem] tracking-[-0.015em] leading-[1.18] text-foreground">
+                    Freelance AI Engineer
+                  </h3>
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                    Bengaluru, India
+                  </span>
+                </div>
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)] mb-4">
+                  Independent · Enterprise Clients
+                </div>
+
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">01</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Built 5 production AI systems across government, telecom, hospitality, and healthcare &mdash; bilingual RAG chatbots, conversational booking agents, HR knowledge retrieval, and receipt intelligence.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">02</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Deployed an on-premise Qwen 3.5 VL pipeline for receipt fraud detection that processes sensitive financial data without cloud dependency on NVIDIA A100 GPUs.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">03</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Designed metadata-filtered semantic retrieval for Ooredoo, one of the largest telecom operators in the Middle East &mdash; scoping search by department, language, and document type.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal mb-3">
+                  &rarr; 5 systems shipped · 4 industries
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {["Python", "FastAPI", "GPT-4o", "LangChain", "RAG", "Qwen VL", "PostgreSQL", "OpenSearch", "Docker", "NVIDIA A100"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10.5px] text-[rgba(237,230,211,0.45)] border border-[rgba(237,230,211,0.08)] px-2 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── 2025 · HashedIn by Deloitte ── */}
+            <div className="border border-[rgba(237,230,211,0.12)] border-t-0">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[rgba(237,230,211,0.08)]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  2025
+                </span>
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                  Oct &ndash; Dec 2025
+                </span>
+              </div>
+
+              <div className="px-5 py-5">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <h3 className="font-serif text-[1.1rem] tracking-[-0.015em] leading-[1.18] text-foreground">
+                    SDE Intern
+                  </h3>
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                    Bengaluru, India
+                  </span>
+                </div>
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)] mb-4">
+                  HashedIn by Deloitte
+                </div>
+
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">01</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Designed and optimized microservices using Java Spring Boot for scalable enterprise services.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">02</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Developed AI-powered conversational systems using LLM frameworks to drive intelligent workflows.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">03</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Implemented event-driven pipelines using Apache Kafka for real-time service communication.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal mb-3">
+                  &rarr; HU Spark Program · Enterprise AI
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {["Java", "Spring Boot", "Apache Kafka", "LLM Frameworks", "Microservices", "Docker"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10.5px] text-[rgba(237,230,211,0.45)] border border-[rgba(237,230,211,0.08)] px-2 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── 2025 · KodNest Technologies ── */}
+            <div className="border border-[rgba(237,230,211,0.12)] border-t-0">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[rgba(237,230,211,0.08)]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  2025
+                </span>
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                  Jan &ndash; May 2025
+                </span>
+              </div>
+
+              <div className="px-5 py-5">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <h3 className="font-serif text-[1.1rem] tracking-[-0.015em] leading-[1.18] text-foreground">
+                    Backend Developer Intern
+                  </h3>
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                    Bengaluru, India
+                  </span>
+                </div>
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)] mb-4">
+                  KodNest Technologies
+                </div>
+
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">01</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Built robust REST APIs using Go (Gin), Java (Spring Boot), and Python (Flask) across multiple backend stacks.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">02</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Integrated PostgreSQL and MySQL to optimize data handling and application performance.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal mb-3">
+                  &rarr; Multi-stack backend development
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {["Go", "Gin", "Java", "Spring Boot", "Python", "Flask", "PostgreSQL", "MySQL"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10.5px] text-[rgba(237,230,211,0.45)] border border-[rgba(237,230,211,0.08)] px-2 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── 2021–2025 · Education ── */}
+            <div className="border border-[rgba(237,230,211,0.12)] border-t-0">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[rgba(237,230,211,0.08)]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  2021 &ndash; 2025
+                </span>
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                  Education
+                </span>
+              </div>
+
+              <div className="px-5 py-5">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <h3 className="font-serif text-[1.1rem] tracking-[-0.015em] leading-[1.18] text-foreground">
+                    B.E. in Information Science
+                  </h3>
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)]">
+                    Davangere, India
+                  </span>
+                </div>
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[rgba(237,230,211,0.45)] mb-4">
+                  Bapuji Institute of Engineering &amp; Technology (VTU)
+                </div>
+
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">01</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      GPA: 8.78 / 10.0 &mdash; Bachelor of Engineering in Information Science &amp; Engineering.
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">02</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Winner &mdash; Tech Zone 2k24 Web Development Competition (Jan 2024).
+                    </p>
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10.5px] text-signal shrink-0">03</span>
+                    <p className="text-[14px] leading-[1.6] text-foreground-2">
+                      Winner &mdash; GDSC Solution Challenge Ideathon (May 2024).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  &rarr; Dec 2021 &ndash; May 2025
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Divider />
+
+      {/* ─── §06 — CONTACT · OPEN COMMS ─── */}
+      <section className="py-20">
+        <div className="mx-auto max-w-[1480px] px-5">
+          <SectionHeader
+            number="§06"
             label="// contact · open comms"
             rightLabel="STDIN OPEN"
           />
