@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-[rgba(0,0,0,0.7)] backdrop-blur-md border-b border-[rgba(237,230,211,0.12)]">
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <div className="mx-auto max-w-[1480px] px-5">
         <nav className="flex items-center gap-4 sm:gap-6 h-10">
           <Link
             href="/"

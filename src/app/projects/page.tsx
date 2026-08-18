@@ -17,7 +17,7 @@ export default function ProjectsPage() {
       <Header />
       <main className="flex-1 pt-10">
         <HeroSection />
-        <section className="mx-auto max-w-[1200px] px-6 lg:px-8 pb-24">
+        <section className="mx-auto max-w-[1480px] px-5 pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10">
             {projects.map((project, i) => (
               <ProjectCard

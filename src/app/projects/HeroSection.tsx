@@ -7,7 +7,7 @@ export function HeroSection() {
 
   return (
     <section className="pt-16 pb-10">
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <div className="mx-auto max-w-[1480px] px-5">
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

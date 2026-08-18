@@ -21,7 +21,7 @@ const fadeIn = (delay = 0) => ({
 
 function SectionShell() {
   return (
-    <div className="flex items-center gap-4 sm:gap-6 h-10 text-[11px] font-mono uppercase tracking-[0.16em] whitespace-nowrap overflow-hidden px-6 lg:px-8 mx-auto max-w-[1200px]">
+    <div className="flex items-center gap-4 sm:gap-6 h-10 text-[11px] font-mono uppercase tracking-[0.16em] whitespace-nowrap overflow-hidden px-5 mx-auto max-w-[1480px]">
       <Link
         href="/"
         className="text-foreground hover:text-signal transition-colors"
@@ -77,7 +77,7 @@ function SectionHeader({
 
 function Divider() {
   return (
-    <div className="border-t border-[rgba(237,230,211,0.12)] mx-auto max-w-[1200px] px-6 lg:px-8" />
+    <div className="border-t border-[rgba(237,230,211,0.12)] mx-auto max-w-[1480px] px-5" />
   );
 }
 
@@ -89,7 +89,7 @@ export function HomePage() {
     <>
       {/* ─── HERO ─── */}
       <section className="relative min-h-[100svh] flex flex-col justify-end pt-24 pb-16">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8 w-full">
+        <div className="mx-auto max-w-[1480px] px-5 w-full">
           {/* Metadata row */}
           <motion.div
             {...(reduce ? {} : fade(0))}
@@ -127,7 +127,7 @@ export function HomePage() {
           {/* Name */}
           <motion.h1
             {...(reduce ? {} : fade(0.1))}
-            className="font-serif text-[clamp(5rem,14vw,8rem)] font-normal tracking-[-0.04em] leading-[0.86] text-foreground mb-8"
+            className="font-serif text-[clamp(5rem,14vw,128.94px)] font-normal tracking-[-0.04em] leading-[0.86] text-foreground mb-8"
           >
             Thousif
             <br />
@@ -137,7 +137,7 @@ export function HomePage() {
           {/* Subtitle */}
           <motion.p
             {...(reduce ? {} : fade(0.2))}
-            className="font-serif italic text-[clamp(1.1rem,2.5vw,1.4rem)] leading-[1.18] tracking-[-0.015em] text-foreground-2 max-w-[520px] mb-12"
+            className="font-serif italic text-[29.952px] leading-[1.18] tracking-[-0.015em] text-foreground-2 max-w-[520px] mb-12"
           >
             I&rsquo;m an AI engineer. I build the systems behind enterprise
             chatbots, booking agents, and document intelligence &mdash;{" "}
@@ -205,7 +205,7 @@ export function HomePage() {
 
       {/* ─── §01 — TRANSMISSION ─── */}
       <section className="py-20">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
             number="§01"
             label="// transmission"
@@ -309,7 +309,7 @@ export function HomePage() {
 
       {/* ─── §02 — MANIFEST · PROJECTS ─── */}
       <section className="py-20">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
             number="§02"
             label="// manifest · builds"
@@ -412,7 +412,7 @@ export function HomePage() {
 
       {/* ─── §03 — CAPABILITY · SKILLS ─── */}
       <section className="py-20">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
             number="§03"
             label="// capability · technology"
@@ -534,7 +534,7 @@ export function HomePage() {
 
       {/* ─── §04 — CONTACT · OPEN COMMS ─── */}
       <section className="py-20">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+        <div className="mx-auto max-w-[1480px] px-5">
           <SectionHeader
             number="§04"
             label="// contact · open comms"
@@ -655,7 +655,7 @@ export function HomePage() {
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t border-[rgba(237,230,211,0.12)] mt-auto">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-8 py-6">
+        <div className="mx-auto max-w-[1480px] px-5 py-6">
           <div className="flex items-center justify-between">
             <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[rgba(237,230,211,0.45)]">
               &copy; 2026 Thousif Ahamed
